@@ -7,11 +7,11 @@ public static class WasiMainWrapper
         using HttpClient client = new();
         client.DefaultRequestHeaders.Accept.Clear();
         client.DefaultRequestHeaders.Add("User-Agent", "dotnet WASI");
-        var query="https://www.random.org/integers/?num=1&min=40&max=45&col=1&base=10&format=plain&rnd=new";
+        var query="https://www.random.org/integers/?num=1&min=40&max=42&col=1&base=10&format=plain&rnd=new";
         var json = await client.GetStringAsync(query);
         Console.WriteLine(json);
 
-        ExampleWorld.exports.ExampleWorld.Add(1, int.Parse(json));
+        ExampleWorld.exports.ExampleWorld.Add(2, int.Parse(json));
         return 0;
     }
 

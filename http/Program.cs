@@ -5,7 +5,7 @@ namespace ProxyWorld.wit.exports.wasi.http.v0_2_0;
 
 public class IncomingHandlerImpl: IIncomingHandler {
     public static void Handle(ITypes.IncomingRequest request, ITypes.ResponseOutparam responseOut) {
-        var content = Encoding.ASCII.GetBytes("Hello, from a Wasm C# OCI Artifact!");
+        var content = Encoding.ASCII.GetBytes("Hello, from C#!");
         var headers = new List<(string, byte[])> {
             ("content-type", Encoding.ASCII.GetBytes("text/plain")),
             ("content-length", Encoding.ASCII.GetBytes(content.Count().ToString()))

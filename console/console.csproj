@@ -31,6 +31,6 @@
   <Target Name="ComposeWasmComponent" AfterTargets="Publish">
     <MakeDir Directories="dist" />
     <Exec
-      Command="wac.exe plug --plug ..\adder-wrapper\composed.wasm $(NativeOutputPath)$(MSBuildProjectName).wasm -o dist/composed.wasm" />
+      Command="wac.exe plug --plug ..\adder-wrapper\dist\composed.wasm $(NativeOutputPath)$(MSBuildProjectName).wasm -o dist/composed.wasm" />
   </Target>
 </Project>
