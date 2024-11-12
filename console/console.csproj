@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+
+    <RuntimeIdentifier>wasi-wasm</RuntimeIdentifier>
+    <UseAppHost>false</UseAppHost>
+    <PublishTrimmed>true</PublishTrimmed>
+    <InvariantGlobalization>true</InvariantGlobalization>
+    <SelfContained>true</SelfContained>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BytecodeAlliance.Componentize.DotNet.Wasm.SDK" Version="0.4.0-preview00007" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Wit Include="adder.wit" />
+  </ItemGroup>
+
+  <Target Name="ComposeWasmComponent" AfterTargets="Publish">
+    <PropertyGroup>
+        <DependencyComponent>../Adder-wrapper/bin/$(Configuration)/$(TargetFramework)/wasi-wasm/native/adder-wrapper.wasm</DependencyComponent>
+    </PropertyGroup>
+    
+    <Exec Command="wac.exe plug --plug ..\adder-wrapper\composed.wasm .\bin\Release\net9.0\wasi-wasm\native\console.wasm -o composed.wasm" />
+</Target>
+</Project>

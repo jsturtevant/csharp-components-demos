@@ -1,0 +1,6 @@
+package example:component;
+
+world example {
+  import add: func(x: s32, y: s32) -> s32;
+  export add: func(x: s32, y: s32) -> s32;
+}
