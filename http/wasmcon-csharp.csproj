@@ -22,12 +22,9 @@
     <Wit Include="wit/wit.wasm" World="proxy" Registry="ghcr.io/webassembly/wasi/http:0.2.0" />
   </ItemGroup>
 
-  <Target Name="PublishOci">
-    <PropertyGroup>
-      <OciRegistry>ghcr.io/jsturtevant/wasmcon-csharp</OciRegistry>
-      <OciTag>0.1.0</OciTag>
-    </PropertyGroup>
-    <Exec
-      Command="$(WkgExe) oci push $(OciRegistry):$(OciTag)  $(NativeOutputPath)$(MSBuildProjectName).wasm" />
+  <Target Name="Dist" AfterTargets="Publish">
+    <MakeDir Directories="dist" />
+    <Copy SourceFiles="$(NativeOutputPath)$(MSBuildProjectName).wasm"
+      DestinationFolder="dist/" />
   </Target>
 </Project>

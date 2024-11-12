@@ -16,10 +16,17 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.DotNet.ILCompiler.LLVM" Version="10.0.0-alpha.1.24559.1" />
-    <PackageReference Include="runtime.win-x64.Microsoft.DotNet.ILCompiler.LLVM" Version="10.0.0-alpha.1.24559.1" />
+    <PackageReference Include="runtime.win-x64.Microsoft.DotNet.ILCompiler.LLVM"
+      Version="10.0.0-alpha.1.24559.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <CustomLinkerArg  Include="-Wl,--component-type,calculator.wit" />
+    <CustomLinkerArg Include="-Wl,--component-type,calculator.wit" />
   </ItemGroup>
+
+  <Target Name="Dist" AfterTargets="Publish">
+    <MakeDir Directories="dist" />
+    <Copy SourceFiles="$(NativeOutputPath)$(MSBuildProjectName).wasm"
+      DestinationFolder="dist/" />
+  </Target>
 </Project>
