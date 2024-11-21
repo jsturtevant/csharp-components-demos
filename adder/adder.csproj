@@ -5,11 +5,14 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
 
+    <!-- Set Wasi target -->
     <RuntimeIdentifier>wasi-wasm</RuntimeIdentifier>
+    <!-- package runtime and trim  -->
     <UseAppHost>false</UseAppHost>
     <PublishTrimmed>true</PublishTrimmed>
     <InvariantGlobalization>true</InvariantGlobalization>
     <SelfContained>true</SelfContained>
+    <!-- required for bindings -->
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <WASI_SDK_PATH>C:\Users\jstur\.wasi-sdk\wasi-sdk-24.0</WASI_SDK_PATH>
   </PropertyGroup>
