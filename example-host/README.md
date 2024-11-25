@@ -1,3 +1,5 @@
+Original at https://github.com/bytecodealliance/component-docs/tree/main/component-model/examples/example-host
+
 # Rust Host Application for Example Components
 
 This is a native Rust CLI application that can run components of the following
